@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>🛠️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Courier New', monospace;
+    }
+
+    body {
+      background-color: #000;
+      color: #00ff00;
+      padding: 20px;
+    }
+
+    .painel {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #010101;
+      border: 2px solid #00ff00;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 0 20px #00ff00;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 28px;
+      margin-bottom: 20px;
+      text-shadow: 0 0 5px #00ff00;
+    }
+
+    p {
+      font-size: 18px;
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    button {
+      display: block;
+      margin: 10px auto;
+      padding: 10px 25px;
+      background-color: transparent;
+      border: 2px solid #00ff00;
+      color: #00ff00;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    button:hover {
+      background-color: #00ff00;
+      color: #000;
+    }
+
+    .log {
+      background-color: #030303;
+      border: 1px solid #0f0;
+      padding: 10px;
+      margin-top: 20px;
+      height: 150px;
+      overflow-y: auto;
+      font-size: 14px;
+    }
+
+    .log p {
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="painel">
+    <h1>🛠️ Terminal Hacker 🛠️</h1>
+    <p>Status: <span id="status">Desligado</span></p>
+    <button onclick="mudarStatus()">Ativar / Desativar</button>
+    <button onclick="registrarLog('Comando secreto executado!')">Executar Comando</button>
+
+    <div class="log" id="log">
+      <p>[LOG] Painel iniciado...</p>
+    </div>
+  </div>
+
+  <script>
+    function mudarStatus() {
+      const status = document.getElementById("status");
+      if (status.textContent === "Desligado") {
+        status.textContent = "Ligado";
+        registrarLog("Sistema ativado.");
+      } else {
+        status.textContent = "Desligado";
+        registrarLog("Sistema desativado.");
+      }
+    }
+
+    function registrarLog(msg) {
+      const log = document.getElementById("log");
+      const now = new Date().toLocaleTimeString();
+      log.innerHTML += `<p>[${now}] ${msg}</p>`;
+      log.scrollTop = log.scrollHeight;
+    }
+  </script>
+</body>
+</html>
